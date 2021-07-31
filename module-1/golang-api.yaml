@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: golang-deployment
+  labels:
+    type: deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: application
+  template:
+    metadata:
+      labels:
+        app: application
+        type: pod
+    spec:
+      containers:
+      - name: golang-container
+        image: kahootali/golang-app
+        ports:
+        - containerPort: 8080
+          name: tcp

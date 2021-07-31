@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: python-backend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      tier: backend
+      app: dice
+  template:
+    metadata:
+      labels:
+        tier: backend
+        app: dice
+    spec:
+      containers:
+      - name: backend
+        image: kahootali/python-backend
+        ports:
+        - containerPort: 8080
+          name: tcp
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend
+spec:
+  selector:
+    tier: backend
+    app: dice
+  ports:
+  - protocol: TCP
+    port: 8080
+    targetPort: 8080
