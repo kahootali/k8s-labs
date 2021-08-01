@@ -6,6 +6,8 @@ metadata:
     type: Deployment
     tier: backend
     author: Ali-Kahoot
+  annotations:
+    session: 6th-batch
 spec:
   replicas: 1
   strategy:
