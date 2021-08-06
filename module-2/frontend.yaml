@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      tier: frontend
+      app: dice
+  template:
+    metadata:
+      labels:
+        tier: frontend
+        app: dice
+    spec:
+      containers:
+      - name: frontend
+        image: kahootali/node-frontend
+        ports:
+        - containerPort: 8080
+          name: tcp
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend
+spec:
+  type: NodePort
+  selector:
+    tier: frontend
+    app: dice
+  ports:
+  - protocol: TCP
+    port: 8080
+    targetPort: 8080
+    nodePort: 31000
+---
