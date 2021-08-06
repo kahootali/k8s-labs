@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: golang-liveness
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: application
+  template:
+    metadata:
+      labels:
+        app: application
+    spec:
+      containers:
+      - name: liveness
+        image: k8s.gcr.io/liveness
+        args:
+        - /server
+        livenessProbe:
+          httpGet:
+            path: /healthz
+            port: 8080
+          initialDelaySeconds: 3
+          failureThreshold: 2
+          periodSeconds: 3
+      # - name: liveness
+      #   image: kahootali/golang-api
+      #   # args:
+      #   # - /server
+      #   livenessProbe:
+      #     httpGet:
+      #       path: /health
+      #       port: 8080
+      #     initialDelaySeconds: 3
+      #     failureThreshold: 2
+      #     periodSeconds: 3
