@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kubectl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kubectl
+  template:
+    metadata:
+      labels:
+        app: kubectl
+    spec:
+      containers:
+      - image: "bitnami/kubectl"
+        imagePullPolicy: IfNotPresent
+        command: ["sleep"]
+        args: ["36000"]
+        name: kubectl
+      serviceAccountName: kubectl
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  labels:
+    app: kubectl
+  name: kubectl
