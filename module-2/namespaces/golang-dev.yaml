@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: golang-deployment
+  namespace: dev
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: application
+  template:
+    metadata:
+      labels:
+        app: application
+    spec:
+      containers:
+      - name: golang-container
+        image: kahootali/golang-api
+        ports:
+        - containerPort: 8080
+          name: tcp
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: golang-api
+  namespace: dev
+spec:
+  type: NodePort
+  selector:
+    app: application
+  ports:
+    - protocol: TCP
+      port: 9090
+      targetPort: 8080
+      nodePort: 31600
