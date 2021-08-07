@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: kahootali/node-frontend
+        image: kahootali/node-frontend:9090
         ports:
         - containerPort: 8080
           name: tcp
