@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ghost
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      tier: ghost
+      app: dice
+  template:
+    metadata:
+      labels:
+        tier: ghost
+        app: dice
+    spec:
+      containers:
+      - name: ghost
+        image: ghost
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ghost
+spec:
+  type: NodePort
+  selector:
+    tier: ghost
+    app: dice
+  ports:
+  - protocol: TCP
+    port: 8080
+    targetPort: 2368
+    nodePort: 31001
+---
