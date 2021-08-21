@@ -4,7 +4,7 @@ apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: mongo-release-mongodb
-  namespace: test
+  namespace: default
   labels:
     app.kubernetes.io/name: mongodb
     helm.sh/chart: mongodb-10.23.9
@@ -18,7 +18,7 @@ apiVersion: v1
 kind: Secret
 metadata:
   name: mongo-release-mongodb
-  namespace: test
+  namespace: default
   labels:
     app.kubernetes.io/name: mongodb
     helm.sh/chart: mongodb-10.23.9
@@ -29,14 +29,14 @@ type: Opaque
 data:
   mongodb-root-password:  "cm9vdDEyMw=="
   mongodb-password:  "YWxpMTIz"
-  mongodb-replica-set-key: "TFJXUkpRNDgyOQ=="
+  mongodb-replica-set-key: "OTRMVzczYndQeg=="
 ---
 # Source: mongodb/templates/replicaset/scripts-configmap.yaml
 apiVersion: v1
 kind: ConfigMap
 metadata:
   name: mongo-release-mongodb-scripts
-  namespace: test
+  namespace: default
   labels:
     app.kubernetes.io/name: mongodb
     helm.sh/chart: mongodb-10.23.9
@@ -82,7 +82,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: mongo-release-mongodb-arbiter-headless
-  namespace: test
+  namespace: default
   labels:
     app.kubernetes.io/name: mongodb
     helm.sh/chart: mongodb-10.23.9
@@ -106,7 +106,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: mongo-release-mongodb-headless
-  namespace: test
+  namespace: default
   labels:
     app.kubernetes.io/name: mongodb
     helm.sh/chart: mongodb-10.23.9
@@ -131,7 +131,7 @@ apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   name: mongo-release-mongodb-arbiter
-  namespace: test
+  namespace: default
   labels:
     app.kubernetes.io/name: mongodb
     helm.sh/chart: mongodb-10.23.9
@@ -168,7 +168,7 @@ spec:
                     app.kubernetes.io/instance: mongo-release
                     app.kubernetes.io/component: arbiter
                 namespaces:
-                  - "test"
+                  - "default"
                 topologyKey: kubernetes.io/hostname
               weight: 1
         nodeAffinity:
@@ -244,7 +244,7 @@ apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   name: mongo-release-mongodb
-  namespace: test
+  namespace: default
   labels:
     app.kubernetes.io/name: mongodb
     helm.sh/chart: mongodb-10.23.9
@@ -285,7 +285,7 @@ spec:
                     app.kubernetes.io/instance: mongo-release
                     app.kubernetes.io/component: mongodb
                 namespaces:
-                  - "test"
+                  - "default"
                 topologyKey: kubernetes.io/hostname
               weight: 1
         nodeAffinity:
