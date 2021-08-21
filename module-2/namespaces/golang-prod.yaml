@@ -2,9 +2,9 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: golang-deployment
-  namespace: prod
+  namespace: dev
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       app: application
@@ -16,10 +16,14 @@ spec:
       containers:
       - name: golang-container
         image: kahootali/golang-api
+        resources:
+          requests:
+            memory: 2Gi
         ports:
         - containerPort: 8080
           name: tcp
 ---
+
 apiVersion: v1
 kind: Service
 metadata:

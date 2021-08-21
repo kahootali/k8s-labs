@@ -16,6 +16,9 @@ spec:
       containers:
       - name: golang-container
         image: kahootali/golang-api
+        resources:
+          requests:
+            memory: 512Mi
         ports:
         - containerPort: 8080
           name: tcp
