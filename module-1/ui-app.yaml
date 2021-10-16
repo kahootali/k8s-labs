@@ -1,36 +1,38 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: python-backend
+  name: ui-app
+  labels:
+    type: deployment
 spec:
-  replicas: 2
+  replicas: 3
   selector:
     matchLabels:
-      tier: backend
-      app: dice
+      app: ui-app
   template:
     metadata:
       labels:
-        tier: backend
-        app: dice
+        app: ui-app
+        type: pod
     spec:
       containers:
-      - name: backend
-        image: kahootali/python-backend:batch7
+      - name: ui-app
+        image: kahootali/golang-sample-app:v1.2.23
         ports:
         - containerPort: 8080
           name: tcp
-
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: backend
+  name: ui-app
 spec:
+  type: NodePort
   selector:
-    tier: backend
-    app: dice
+    app: ui-app
+    type: pod
   ports:
   - protocol: TCP
-    port: 8080
+    port: 80
     targetPort: 8080
+    nodePort: 32000
