@@ -1,9 +1,9 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: backend
+  name: python-backend
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       tier: backend
@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: backend
-        image: kahootali/python-backend
+        image: kahootali/python-backend:batch7
         ports:
         - containerPort: 8080
           name: tcp
@@ -32,5 +32,5 @@ spec:
     app: dice
   ports:
   - protocol: TCP
-    port: 9090
+    port: 8080
     targetPort: 8080
