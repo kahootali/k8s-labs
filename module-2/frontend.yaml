@@ -19,7 +19,7 @@ spec:
         image: kahootali/node-frontend:batch7
         env:
         - name: BACKEND_URL
-          value: backend:8080
+          value: backend:9090
         ports:
         - containerPort: 8080
           name: tcp

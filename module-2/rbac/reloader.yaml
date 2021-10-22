@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: reloader
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: reloader
+  template:
+    metadata:
+      labels:
+        app: reloader
+    spec:
+      containers:
+      - image: "stakater/reloader:v0.0.102"
+        imagePullPolicy: IfNotPresent
+        name: reloader-reloader
+
+        ports:
+        - name: http
+          containerPort: 9090
+        livenessProbe:
+          httpGet:
+            path: /metrics
+            port: http
+          timeoutSeconds: 5
+          failureThreshold: 5
+          periodSeconds: 10
+          successThreshold: 1
+        readinessProbe:
+          httpGet:
+            path: /metrics
+            port: http
+          timeoutSeconds: 5
+          failureThreshold: 5
+          periodSeconds: 10
+          successThreshold: 1
+      securityContext: 
+        runAsNonRoot: true
+        runAsUser: 65534
+      serviceAccountName: reloader
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  labels:
+    app: reloader
+  name: reloader
+---
