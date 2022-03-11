@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: kahootali/node-frontend:batch7
+        image: kahootali/node-frontend:batch8
         env:
         - name: BACKEND_URL
           value: backend:8080
