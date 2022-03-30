@@ -4,8 +4,10 @@ metadata:
   name: trading-strategy
   namespace: default
 data:
+  config.txt: |
+    environment: sandbox
   strategy.type: HFT
   strategy.maxVolume: "5000"
   strategy.risk: high
   instructor-1: Muhammad Ali Kahoot
-  instructor-2: Ali Arslan
+  instructor-2: M. Sannan
