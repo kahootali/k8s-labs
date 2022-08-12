@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: ui-app
-        image: kahootali/golang-sample-app:v1.2.23
+        image: kahootali/golang-sample-app:v1.2.26
         ports:
         - containerPort: 8080
           name: tcp

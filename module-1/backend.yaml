@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: backend
-        image: kahootali/python-backend:batch8
+        image: kahootali/python-backend:batch9
         ports:
         - containerPort: 8080
           name: tcp
