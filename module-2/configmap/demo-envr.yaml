@@ -9,24 +9,17 @@ spec:
     args: [/bin/sh, -c,'i=0; while true; do sleep 1s; done']
     ports:
     - containerPort: 8080
+    envFrom:
+      - configMapRef:
+          name: app-env-config
     env:
-    - name: STRATEGY_RISK
-      valueFrom:
-        configMapKeyRef:
-          name: trading-strategy
-          key: strategy.risk 
-    - name: STRATEGY_TYPE
-      valueFrom:
-        configMapKeyRef:
-          name: trading-strategy
-          key: strategy.type 
     - name: INSTRUCTOR1
       valueFrom:
         configMapKeyRef:
-          name: trading-strategy
+          name: app-config
           key: instructor-1
     - name: INSTRUCTOR2
       valueFrom:
         configMapKeyRef:
-          name: trading-strategy
+          name: app-config
           key: instructor-2

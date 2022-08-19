@@ -16,10 +16,10 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: kahootali/node-frontend:batch7
+        image: kahootali/node-frontend:batch9
         env:
         - name: BACKEND_URL
-          value: backend:9090
+          value: backend:8080
         ports:
         - containerPort: 8080
           name: tcp
