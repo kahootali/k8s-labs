@@ -48,6 +48,12 @@ spec:
         volumeMounts:
           - mountPath: "/usr/share/nginx/html"
             name: task-pv-storage
+      - name: test
+        image: busybox
+        args: [/bin/sh, -c,'i=0; while true; do sleep 1s; done']
+        volumeMounts:
+          - mountPath: "test/"
+            name: task-pv-storage
       volumes:
       - name: task-pv-storage
         persistentVolumeClaim:
