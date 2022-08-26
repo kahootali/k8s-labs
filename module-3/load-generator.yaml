@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: null
+  labels:
+    run: load-generator
+  name: load-generator
+spec:
+  containers:
+  - image: busybox
+    name: load-generator
+    args: ["sleep", "36000"]
+    
+    resources: {}
+  dnsPolicy: ClusterFirst
+  restartPolicy: Always
+status: {}

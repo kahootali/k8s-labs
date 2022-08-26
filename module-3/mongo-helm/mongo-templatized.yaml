@@ -29,7 +29,7 @@ type: Opaque
 data:
   mongodb-root-password: "cm9vdDEyMw=="
   mongodb-passwords: "YWxpMTIz"
-  mongodb-replica-set-key: "c1RNU1J2RlVybQ=="
+  mongodb-replica-set-key: "bGR0WWxTY0NFcw=="
 ---
 # Source: mongodb/templates/replicaset/scripts-configmap.yaml
 apiVersion: v1
