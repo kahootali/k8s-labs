@@ -1,13 +1,7 @@
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: <insert-namespace-name-here>
----  
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: ghost
-  namespace: <insert-namespace-name-here>
 spec:
   replicas: 1
   selector:
@@ -22,14 +16,13 @@ spec:
     spec:
       containers:
       - name: ghost
-        image: ghost
+        image: ghost:4.44
 
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: ghost
-  namespace: <insert-namespace-name-here>
 spec:
   type: NodePort
   selector:
@@ -39,5 +32,5 @@ spec:
   - protocol: TCP
     port: 8080
     targetPort: 2368
-    nodePort: <PORT>
+    nodePort: 31000-32000
 ---
