@@ -1,3 +1,5 @@
+helm repo add bitnami https://charts.bitnami.com/bitnami
+
 helm template mongo-release bitnami/mongodb --version 11.0.6 -n default -f mongo-values.yaml > mongo-templatized.yaml
 helm install mongo-release bitnami/mongodb --version 11.0.6 -n default -f mongo-values.yaml  
 

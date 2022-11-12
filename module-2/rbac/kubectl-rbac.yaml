@@ -1,4 +1,39 @@
 apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  labels: 
+    app: kubectl
+  name: kubectl-role
+  namespace: default
+rules:
+  - apiGroups:
+      - ""
+    resources:
+      - "pods"
+    verbs:
+      - list
+      - get
+      - watch
+      #- delete
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  labels: 
+    app: kubectl
+  name: kubectl-role-binding
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: kubectl-role
+subjects:
+  - kind: ServiceAccount
+    name: kubectl
+    namespace: default
+
+---
+
+apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
   labels: 

@@ -9,3 +9,12 @@ spec:
   - name: busybox-with-curl
     image: kahootali/busybox-with-curl
     args: [/bin/sh, -c,'i=0; while true; do sleep 1s; done']
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-service
+spec:
+  type: ExternalName
+  externalName: google.com
