@@ -15,3 +15,6 @@ spec:
   dnsPolicy: ClusterFirst
   restartPolicy: Always
 status: {}
+
+
+#while true; do wget -q -O- http://php-apache.default.svc.cluster.local; done

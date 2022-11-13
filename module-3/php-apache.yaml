@@ -36,7 +36,7 @@ spec:
     port: 80
     targetPort: 80
 ---
-apiVersion: autoscaling/v1
+apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
   name: php-apache
@@ -48,4 +48,10 @@ spec:
     apiVersion: apps/v1
     kind: Deployment
     name: php-apache
-  targetCPUUtilizationPercentage: 80
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 50
