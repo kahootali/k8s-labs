@@ -5,7 +5,7 @@ metadata:
 spec:
   containers:
   - name: envtest
-    image: busybox
+    image: ubuntu
     args: [/bin/sh, -c,'i=0; while true; do sleep 1s; done']
     ports:
     - containerPort: 8080

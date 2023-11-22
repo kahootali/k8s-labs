@@ -5,11 +5,11 @@ metadata:
 spec:
   containers:
   - name: counter-1
-    image: busybox
+    image: ubuntu
     args: [/bin/sh, -c,'i=0; while true; do echo "$i: $(date) 1st Container in Multi-Pod "; i=$((i+1)); sleep 5s; done']
   - name: counter-2
-    image: busybox
+    image: ubuntu
     args: [/bin/sh, -c,'i=0; while true; do echo "$i: $(date) 2nd Container in Multi-Pod"; i=$((i+1)); sleep 10s; done']
   - name: counter-3
-    image: busybox
+    image: ubuntu
     args: [/bin/sh, -c,'i=0; while true; do echo "$i: $(date) 3rd Container in Multi-Pod"; i=$((i+1)); sleep 15s; done']

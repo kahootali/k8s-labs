@@ -7,7 +7,7 @@ metadata:
   name: load-generator
 spec:
   containers:
-  - image: busybox
+  - image: ubuntu
     name: load-generator
     args: ["sleep", "36000"]
     
