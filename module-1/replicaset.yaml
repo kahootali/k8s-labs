@@ -3,7 +3,7 @@ kind: ReplicaSet
 metadata:
   name: counter
 spec:
-  replicas: 2
+  replicas: 3
   selector:
     matchLabels:
       app: counter
@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: counter
-          image: busybox
+          image: ubuntu
           args: [/bin/sh, -c,'i=0; while true; do echo "$i: $(date) Hi students, Are you learning well from $(INSTRUCTOR)?"; i=$((i+1)); sleep 10s; done']
           env:
           - name: INSTRUCTOR
