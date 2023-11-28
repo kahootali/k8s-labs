@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: my-service
+  name: hidden-google-service
 spec:
   type: ExternalName
-  externalName: any-external-url
+  externalName: google.com

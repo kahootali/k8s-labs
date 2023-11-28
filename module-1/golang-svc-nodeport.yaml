@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: golang-api
 spec:
-  type: ClusterIP
+  type: NodePort
   selector:
     app: application
     type: pod
@@ -11,3 +11,4 @@ spec:
   - protocol: TCP
     port: 9090
     targetPort: 8080
+    nodePort: 32000
